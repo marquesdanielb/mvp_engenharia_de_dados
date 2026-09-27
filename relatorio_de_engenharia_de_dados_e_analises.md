@@ -167,7 +167,7 @@ No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definiti
 
 **Pergunta 5: A dependência do Boleto Bancário e a fricção logística**
 
-[A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
+![A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
 > _Discussão:_ A análise da base histórica demonstra que, embora o cartão de crédito respondesse pela grande maioria do mercado (76,94%), o Boleto Bancário sustentava praticamente 1 em cada 5 pedidos (19,9%). No ecossistema de _Supply Chain_, um volume de quase 20% condicionado a um meio de pagamento com liquidação morosa (que exige de 1 a 3 dias úteis para compensação bancária) representa um gargalo operacional grave. Durante esse período de "reserva", o estoque do lojista fica bloqueado — indisponível para outros compradores reais — e o _time-to-dispatch_ (tempo até a postagem) é congelado, estendendo artificialmente o prazo de entrega final (SLA) percebido pelo cliente.
 
 Esta fotografia da base ilustra perfeitamente o atrito logístico e financeiro superado estruturalmente no Brasil a partir de novembro de 2020. A implementação do PIX pelo Banco Central atacou cirurgicamente a deficiência tecnológica do boleto, garantindo compensação instantânea (o que libera o fluxo de postagem no mesmo dia) e incluindo digitalmente a vasta parcela da população desbancarizada ou sem limite de crédito. O pipeline de dados revela, portanto, o tamanho exato da dor que o PIX veio curar no varejo digital.
