@@ -14,7 +14,7 @@ O pipeline foi modelado para responder aos seguintes questionamentos:
 
 ### Estrutura dos Dados Brutos
 
-A base original é composta por tabelas relacionais exportadas em formato CSV: ![Kaggle - Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+A base original é composta por tabelas relacionais exportadas em formato CSV: [Kaggle - Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 - `olist_orders_dataset`: Identificação única do pedido, status de processamento e carimbos de tempo (compra, aprovação, envio e entrega ao cliente).
 - `olist_order_items_dataset`: Detalhamento financeiro em nível de SKU, contendo preços dos produtos e valores de frete cobrados.
@@ -149,9 +149,9 @@ Em termos de _Business Intelligence_, uma taxa de quebra de promessa de entrega 
 
 **Fontes:**
 
-- **Federação das Indústrias do Estado do Rio de Janeiro - FIRJAN (2018):** _Relatório de Roubo de Cargas no Estado do Rio de Janeiro_. Estudo detalhado sobre o impacto da crise de segurança na cadeia de abastecimento, que levou à criação de zonas de restrição de entrega e ao colapso dos prazos logísticos no estado. ![Relatório de Roubo de Cargas no Estado do Rio de Janeiro](https://firjan.com.br/lumis/portal/file/fileDownload.jsp?fileId=2C908A8A6895B4030168A94F999652F5)
+- **Federação das Indústrias do Estado do Rio de Janeiro - FIRJAN (2018):** _Relatório de Roubo de Cargas no Estado do Rio de Janeiro_. Estudo detalhado sobre o impacto da crise de segurança na cadeia de abastecimento, que levou à criação de zonas de restrição de entrega e ao colapso dos prazos logísticos no estado. [Relatório de Roubo de Cargas no Estado do Rio de Janeiro](https://firjan.com.br/lumis/portal/file/fileDownload.jsp?fileId=2C908A8A6895B4030168A94F999652F5)
 - **Confederação Nacional do Transporte - CNT (2018):** _Boletim Estatístico da CNT_. Dados sobre a ineficiência e degradação da malha rodoviária nas vias de ligação ao Norte e Nordeste, justificando os elevados tempos médios de trânsito no comércio eletrónico. ![Boletim Estatístico da CNT](https://data.cnt.org.br/sociedade/boletim-estatistico-2018-jan-2018-2/)
-- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Impacto da Logística na Experiência do Consumidor_. Relatório de mercado que quantifica a quebra de SLA (atrasos na entrega) como o principal promotor de avaliações negativas e perda de _Lifetime Value_ (LTV) no varejo digital. ![Impacto da Logística na Experiência do Consumidor](https://abiacom.org/estudos/)
+- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Impacto da Logística na Experiência do Consumidor_. Relatório de mercado que quantifica a quebra de SLA (atrasos na entrega) como o principal promotor de avaliações negativas e perda de _Lifetime Value_ (LTV) no varejo digital. [Impacto da Logística na Experiência do Consumidor](https://abiacom.org/estudos/)
 
 **Pergunta 4: Picos Sazonais e Faturamento (Agrupamento Temporal)**
 
@@ -162,18 +162,18 @@ No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definiti
 
 **Fontes:**
 
-- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 37 e 38)_. Estudo consolidado sobre o mercado brasileiro que demonstra como a Black Friday atua não apenas como um pico de vendas, mas como o principal motor de experimentação e retenção de novos consumidores (e-shoppers) para o ano letivo seguinte. ![Relatório Webshoppers - Edição 37](https://www.fecomercio.com.br/upload/editor/pdfs/ws37_imprensa.pdf)
-- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. ![Crescimento do E-commerce no Brasil](https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
+- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 37 e 38)_. Estudo consolidado sobre o mercado brasileiro que demonstra como a Black Friday atua não apenas como um pico de vendas, mas como o principal motor de experimentação e retenção de novos consumidores (e-shoppers) para o ano letivo seguinte. [Relatório Webshoppers - Edição 37](https://www.fecomercio.com.br/upload/editor/pdfs/ws37_imprensa.pdf)
+- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. [Crescimento do E-commerce no Brasil](https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
 
 **Pergunta 5: A dependência do Boleto Bancário e a fricção logística**
-![A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
+[A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
 > _Discussão:_ A análise da base histórica demonstra que, embora o cartão de crédito respondesse pela grande maioria do mercado (76,94%), o Boleto Bancário sustentava praticamente 1 em cada 5 pedidos (19,9%). No ecossistema de _Supply Chain_, um volume de quase 20% condicionado a um meio de pagamento com liquidação morosa (que exige de 1 a 3 dias úteis para compensação bancária) representa um gargalo operacional grave. Durante esse período de "reserva", o estoque do lojista fica bloqueado — indisponível para outros compradores reais — e o _time-to-dispatch_ (tempo até a postagem) é congelado, estendendo artificialmente o prazo de entrega final (SLA) percebido pelo cliente.
 
 Esta fotografia da base ilustra perfeitamente o atrito logístico e financeiro superado estruturalmente no Brasil a partir de novembro de 2020. A implementação do PIX pelo Banco Central atacou cirurgicamente a deficiência tecnológica do boleto, garantindo compensação instantânea (o que libera o fluxo de postagem no mesmo dia) e incluindo digitalmente a vasta parcela da população desbancarizada ou sem limite de crédito. O pipeline de dados revela, portanto, o tamanho exato da dor que o PIX veio curar no varejo digital.
 
 **Fontes:**
 
-- **Banco Central do Brasil - BCB (2020):** _Lançamento do Pix e a Digitalização do Sistema Financeiro_. Relatórios e normativas do BCB sobre a modernização dos pagamentos instantâneos para mitigar a ineficiência de liquidação de boletos e a fricção no varejo (![Sobre o Pix](https://www.bcb.gov.br/estabilidadefinanceira/pix-sobre)).
+- **Banco Central do Brasil - BCB (2020):** _Lançamento do Pix e a Digitalização do Sistema Financeiro_. Relatórios e normativas do BCB sobre a modernização dos pagamentos instantâneos para mitigar a ineficiência de liquidação de boletos e a fricção no varejo ([Sobre o Pix](https://www.bcb.gov.br/estabilidadefinanceira/pix-sobre)).
 - **Ebit | Nielsen (2018/2019):** _Relatório Webshoppers (Edição 38)_. Aponta a forte adesão do boleto bancário no período analisado como alternativa principal para consumidores desbancarizados ou avessos ao comprometimento do limite do cartão de crédito no e-commerce. ([Relatório Webshoppers - Edição 38](https://www.fecomercio.com.br/upload/editor/ws38_vfinal.pdf))
 
 ## 7. Autoavaliação
