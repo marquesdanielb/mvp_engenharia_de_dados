@@ -6,7 +6,7 @@ No comércio eletrônico, a eficiência logística e a diversidade de meios de p
 
 O pipeline foi modelado para responder aos seguintes questionamentos:
 
-1. Qual é o volume total de faturamento e o ticket médio por estado (UF) do cliente
+1. Qual é o volume total de faturamento e o ticket médio por estado (UF) do cliente?
 2. Como o custo de frete se comporta proporcionalmente ao valor dos produtos em diferentes regiões do país?
 3. Qual é o tempo médio real de entrega (em dias) por estado e como isso impacta o percentual de atrasos logísticos?
 4. Quais são as datas (ano e mês) com maiores picos de volume de pedidos e faturamento?
@@ -14,7 +14,7 @@ O pipeline foi modelado para responder aos seguintes questionamentos:
 
 ### Estrutura dos Dados Brutos
 
-A base original é composta por tabelas relacionais exportadas em formato CSV:
+A base original é composta por tabelas relacionais exportadas em formato CSV: ![Kaggle - Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 - `olist_orders_dataset`: Identificação única do pedido, status de processamento e carimbos de tempo (compra, aprovação, envio e entrega ao cliente).
 - `olist_order_items_dataset`: Detalhamento financeiro em nível de SKU, contendo preços dos produtos e valores de frete cobrados.
@@ -33,7 +33,7 @@ O processo de Ingestão (Extract & Load) foi executado enviando os arquivos est�
 - **Caminho de Armazenamento:** `/Volumes/workspace/default/raw_data`
 - **Arquivos ingeridos:** `olist_orders_dataset.csv`, `olist_order_items_dataset.csv`, `olist_customers_dataset.csv`, `olist_order_payments_dataset.csv`.
 
-![[unity_catalog.png]]
+![Unity Catalog](./imgs/unity_catalog.png)
 
 ## 3. Modelagem e Catálogo de Dados (Etapa 4.3)
 
@@ -82,7 +82,7 @@ Tabela: `silver_payments`
 
 **Tabela: `gold_vendas_entregas`** Tabela consolidada e desnormalizada unindo informações logísticas, geográficas e financeiras. Filtrada via engenharia para refletir apenas os pedidos concluídos (`order_status = 'delivered'`). Facilita o consumo analítico direto sem necessidade de junções complexas pelas ferramentas de Business Intelligence.
 
-![[tabela_gold.png]]
+![Tabela Gold](./imgs/tabela_gold.png)
 
 ## 4. Pipeline de Dados (Etapa 4.4)
 
@@ -94,7 +94,7 @@ O processo de ETL foi construído e orquestrado em um notebook central na plataf
 
 Todos os dados intermediários e finais foram salvos no formato **Delta**, garantindo transações ACID nativas sobre os objetos.
 
-![[pipeline_de_dados.png]]
+![Pipeline de Dados](./imgs/pipeline_de_dados.png)
 
 ## 5. Qualidade de Dados (Etapa 4.5)
 
@@ -119,8 +119,8 @@ O cruzamento do volume absoluto com o ticket médio revela o _insight_ logístic
 
 **Fontes:**
 
-- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 38)_. Estudo sobre o comportamento do e-commerce brasileiro, ticket médio por região e o impacto logístico nas decisões de compra ([ws38_vfinal.pdf](https://www.fecomercio.com.br/upload/editor/ws38_vfinal.pdf)).
-- **CETIC.br (2018):** _Pesquisa TIC Domicílios 2018_. Dados sobre a penetração de acesso à internet, banda larga e desigualdade de infraestrutura digital no Brasil (cetic.br/pt/pesquisa/domicilios).
+- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 38)_. Estudo sobre o comportamento do e-commerce brasileiro, ticket médio por região e o impacto logístico nas decisões de compra ([Relatório Webshoppers - Edição 38](https://www.fecomercio.com.br/upload/editor/ws38_vfinal.pdf)).
+- **CETIC.br (2018):** _Pesquisa TIC Domicílios 2018_. Dados sobre a penetração de acesso à internet, banda larga e desigualdade de infraestrutura digital no Brasil ([Pesquisa TIC Domicílios 2018](https://cetic.br/pt/pesquisa/domicilios/)).
 - **IBGE (2018):** _PNAD Contínua 2018_. Relatório de rendimento de todas as fontes, evidenciando a concentração de massa salarial no Sudeste ([Divulgação anual | IBGE](https://www.ibge.gov.br/estatisticas/sociais/trabalho/17270-pnad-continua.html)).
 
 **Pergunta 2: Custos de Frete vs. Valor do Produto**
@@ -143,15 +143,15 @@ Do ponto de vista de _Business Intelligence_, um frete que consome mais de 1/4 d
 ![Tempo Médio de Entrega e Atrasos Logísticos](./imgs/pergunta_3.png)
 > _Discussão:_ A análise ao tempo de trânsito logístico expõe de forma crua as assimetrias de infraestrutura e os desafios de segurança pública no Brasil. O topo da tabela de atrasos é dominado por estados da região Nordeste, com Alagoas (AL) a registar uma taxa de quebra de SLA alarmante: mais de 1 em cada 4 pedidos (25,94%) não chegou dentro do prazo estimado, com uma média de espera de 24,4 dias. O Maranhão (MA) e Sergipe (SE) seguem a mesma tendência, o que evidencia a profunda dependência de malhas rodoviárias longas e a falta de centros de distribuição avançados nestas regiões durante o período analisado.
 
-Um dado que se destaca nesta consulta é a presença do Rio de Janeiro (RJ) na 7.ª posição, com 14,86% de atrasos e uma média de 15,1 dias para a entrega, números invulgares para o eixo do Sudeste. Este fenómeno não é justificado pela distância, mas sim pela crise de segurança pública que atingiu o estado entre 2017 e 2018. O agravamento do roubo de cargas forçou as transportadoras e a empresa pública de Correios a mapearem centenas de "Áreas com Restrição de Entrega". Nestes locais, as encomendas sofriam atrasos severos devido à necessidade de agrupamento de carga para escolta armada ou obrigavam o cliente a deslocar-se a uma agência para o levantamento físico do produto.
+Um dado que se destaca nesta consulta é a presença do Rio de Janeiro (RJ) na 7.ª posição, com 14,86% de atrasos e uma média de 15,1 dias para a entrega, números invulgares para o eixo do Sudeste. Este fenômeno não é justificado pela distância, mas sim pela crise de segurança pública que atingiu o estado entre 2017 e 2018. O agravamento do roubo de cargas forçou as transportadoras e a empresa pública de Correios a mapearem centenas de "Áreas com Restrição de Entrega". Nestes locais, as encomendas sofriam atrasos severos devido à necessidade de agrupamento de carga para escolta armada ou obrigavam o cliente a deslocar-se a uma agência para o levantamento físico do produto.
 
 Em termos de _Business Intelligence_, uma taxa de quebra de promessa de entrega superior a 15% (verificada nos seis primeiros estados da lista) é um fator crítico de insatisfação. Este cenário gera não só o aumento dos custos operacionais com o apoio ao cliente (SAC) e logística reversa, mas também destrói a métrica de retenção e recompra nas regiões afetadas.
 
 **Fontes:**
 
-- **Federação das Indústrias do Estado do Rio de Janeiro - FIRJAN (2018):** _Relatório de Roubo de Cargas no Estado do Rio de Janeiro_. Estudo detalhado sobre o impacto da crise de segurança na cadeia de abastecimento, que levou à criação de zonas de restrição de entrega e ao colapso dos prazos logísticos no estado. (https://firjan.com.br/lumis/portal/file/fileDownload.jsp?fileId=2C908A8A6895B4030168A94F999652F5)
-- **Confederação Nacional do Transporte - CNT (2018):** _Boletim Estatístico da CNT_. Dados sobre a ineficiência e degradação da malha rodoviária nas vias de ligação ao Norte e Nordeste, justificando os elevados tempos médios de trânsito no comércio eletrónico. (https://data.cnt.org.br/sociedade/boletim-estatistico-2018-jan-2018-2/)
-- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Impacto da Logística na Experiência do Consumidor_. Relatório de mercado que quantifica a quebra de SLA (atrasos na entrega) como o principal promotor de avaliações negativas e perda de _Lifetime Value_ (LTV) no varejo digital. (https://abiacom.org/estudos/)
+- **Federação das Indústrias do Estado do Rio de Janeiro - FIRJAN (2018):** _Relatório de Roubo de Cargas no Estado do Rio de Janeiro_. Estudo detalhado sobre o impacto da crise de segurança na cadeia de abastecimento, que levou à criação de zonas de restrição de entrega e ao colapso dos prazos logísticos no estado. ![Relatório de Roubo de Cargas no Estado do Rio de Janeiro](https://firjan.com.br/lumis/portal/file/fileDownload.jsp?fileId=2C908A8A6895B4030168A94F999652F5)
+- **Confederação Nacional do Transporte - CNT (2018):** _Boletim Estatístico da CNT_. Dados sobre a ineficiência e degradação da malha rodoviária nas vias de ligação ao Norte e Nordeste, justificando os elevados tempos médios de trânsito no comércio eletrónico. ![Boletim Estatístico da CNT](https://data.cnt.org.br/sociedade/boletim-estatistico-2018-jan-2018-2/)
+- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Impacto da Logística na Experiência do Consumidor_. Relatório de mercado que quantifica a quebra de SLA (atrasos na entrega) como o principal promotor de avaliações negativas e perda de _Lifetime Value_ (LTV) no varejo digital. ![Impacto da Logística na Experiência do Consumidor](https://abiacom.org/estudos/)
 
 **Pergunta 4: Picos Sazonais e Faturamento (Agrupamento Temporal)**
 
@@ -162,8 +162,8 @@ No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definiti
 
 **Fontes:**
 
-- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 37 e 38)_. Estudo consolidado sobre o mercado brasileiro que demonstra como a Black Friday atua não apenas como um pico de vendas, mas como o principal motor de experimentação e retenção de novos consumidores (e-shoppers) para o ano letivo seguinte. (https://www.fecomercio.com.br/upload/editor/pdfs/ws37_imprensa.pdf)
-- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. (https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
+- **Ebit | Nielsen (2018):** _Relatório Webshoppers (Edição 37 e 38)_. Estudo consolidado sobre o mercado brasileiro que demonstra como a Black Friday atua não apenas como um pico de vendas, mas como o principal motor de experimentação e retenção de novos consumidores (e-shoppers) para o ano letivo seguinte. ![Relatório Webshoppers - Edição 37](https://www.fecomercio.com.br/upload/editor/pdfs/ws37_imprensa.pdf)
+- **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. ![Crescimento do E-commerce no Brasil](https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
 
 **Pergunta 5: A dependência do Boleto Bancário e a fricção logística**
 ![A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
@@ -173,8 +173,8 @@ Esta fotografia da base ilustra perfeitamente o atrito logístico e financeiro s
 
 **Fontes:**
 
-- **Banco Central do Brasil - BCB (2020):** _Lançamento do Pix e a Digitalização do Sistema Financeiro_. Relatórios e normativas do BCB sobre a modernização dos pagamentos instantâneos para mitigar a ineficiência de liquidação de boletos e a fricção no varejo ([Sobre o Pix](https://www.bcb.gov.br/estabilidadefinanceira/pix-sobre)).
-- **Ebit | Nielsen (2018/2019):** _Relatório Webshoppers (Edição 38)_. Aponta a forte adesão do boleto bancário no período analisado como alternativa principal para consumidores desbancarizados ou avessos ao comprometimento do limite do cartão de crédito no e-commerce. ([ws38_vfinal.pdf](https://www.fecomercio.com.br/upload/editor/ws38_vfinal.pdf))
+- **Banco Central do Brasil - BCB (2020):** _Lançamento do Pix e a Digitalização do Sistema Financeiro_. Relatórios e normativas do BCB sobre a modernização dos pagamentos instantâneos para mitigar a ineficiência de liquidação de boletos e a fricção no varejo (![Sobre o Pix](https://www.bcb.gov.br/estabilidadefinanceira/pix-sobre)).
+- **Ebit | Nielsen (2018/2019):** _Relatório Webshoppers (Edição 38)_. Aponta a forte adesão do boleto bancário no período analisado como alternativa principal para consumidores desbancarizados ou avessos ao comprometimento do limite do cartão de crédito no e-commerce. ([Relatório Webshoppers - Edição 38](https://www.fecomercio.com.br/upload/editor/ws38_vfinal.pdf))
 
 ## 7. Autoavaliação
 
