@@ -150,7 +150,7 @@ Em termos de _Business Intelligence_, uma taxa de quebra de promessa de entrega 
 **Fontes:**
 
 - **Federação das Indústrias do Estado do Rio de Janeiro - FIRJAN (2018):** _Relatório de Roubo de Cargas no Estado do Rio de Janeiro_. Estudo detalhado sobre o impacto da crise de segurança na cadeia de abastecimento, que levou à criação de zonas de restrição de entrega e ao colapso dos prazos logísticos no estado. [Relatório de Roubo de Cargas no Estado do Rio de Janeiro](https://firjan.com.br/lumis/portal/file/fileDownload.jsp?fileId=2C908A8A6895B4030168A94F999652F5)
-- **Confederação Nacional do Transporte - CNT (2018):** _Boletim Estatístico da CNT_. Dados sobre a ineficiência e degradação da malha rodoviária nas vias de ligação ao Norte e Nordeste, justificando os elevados tempos médios de trânsito no comércio eletrónico. ![Boletim Estatístico da CNT](https://data.cnt.org.br/sociedade/boletim-estatistico-2018-jan-2018-2/)
+- **Confederação Nacional do Transporte - CNT (2018):** _Boletim Estatístico da CNT_. Dados sobre a ineficiência e degradação da malha rodoviária nas vias de ligação ao Norte e Nordeste, justificando os elevados tempos médios de trânsito no comércio eletrónico. [Boletim Estatístico da CNT](https://data.cnt.org.br/sociedade/boletim-estatistico-2018-jan-2018-2/)
 - **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Impacto da Logística na Experiência do Consumidor_. Relatório de mercado que quantifica a quebra de SLA (atrasos na entrega) como o principal promotor de avaliações negativas e perda de _Lifetime Value_ (LTV) no varejo digital. [Impacto da Logística na Experiência do Consumidor](https://abiacom.org/estudos/)
 
 **Pergunta 4: Picos Sazonais e Faturamento (Agrupamento Temporal)**
@@ -166,6 +166,7 @@ No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definiti
 - **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. [Crescimento do E-commerce no Brasil](https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
 
 **Pergunta 5: A dependência do Boleto Bancário e a fricção logística**
+
 [A dependência do Boleto Bancário e a fricção logística](./imgs/pergunta_5.png)
 > _Discussão:_ A análise da base histórica demonstra que, embora o cartão de crédito respondesse pela grande maioria do mercado (76,94%), o Boleto Bancário sustentava praticamente 1 em cada 5 pedidos (19,9%). No ecossistema de _Supply Chain_, um volume de quase 20% condicionado a um meio de pagamento com liquidação morosa (que exige de 1 a 3 dias úteis para compensação bancária) representa um gargalo operacional grave. Durante esse período de "reserva", o estoque do lojista fica bloqueado — indisponível para outros compradores reais — e o _time-to-dispatch_ (tempo até a postagem) é congelado, estendendo artificialmente o prazo de entrega final (SLA) percebido pelo cliente.
 
