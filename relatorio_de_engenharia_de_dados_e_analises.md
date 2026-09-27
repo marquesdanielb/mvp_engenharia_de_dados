@@ -110,7 +110,7 @@ As consultas da camada Gold permitiram a validação das premissas de negócios 
 
 **Pergunta 1: Faturamento e Ticket Médio por UF**
 
-![[./imgs/pergunta_1.png]]
+![./imgs/pergunta_1.png]
 > _Discussão:_ A análise dos resultados evidencia uma assimetria drástica no e-commerce brasileiro, refletindo diretamente as desigualdades socioeconômicas e de infraestrutura do país no período consolidado da base (2016-2018).
 
 O estado de São Paulo lidera de forma absoluta o volume de mercado, seguido pelo Rio de Janeiro e Minas Gerais. Este cenário é sustentado pela concentração do PIB e pela maior penetração de banda larga domiciliar no Sudeste, aliadas à presença maciça dos principais Centros de Distribuição (CDs) na malha viária paulista, o que reduz o atrito de compra.
@@ -125,7 +125,7 @@ O cruzamento do volume absoluto com o ticket médio revela o _insight_ logístic
 
 **Pergunta 2: Custos de Frete vs. Valor do Produto**
 
-![[./imgs/pergunta_2.png]]
+![./imgs/pergunta_2.png]
 > _Discussão:_ A análise da proporção entre o custo do frete e o valor do produto escancara o peso do chamado "Custo Brasil" na cadeia de _Supply Chain_. O topo do ranking é dominado exclusivamente por estados das regiões Norte e Nordeste. Em Roraima (RR) e no Maranhão (MA), o custo de envio chega a representar, respectivamente, 28,08% e 26,32% do valor total da mercadoria adquirida.
 
 Este cenário reflete a extrema concentração dos estoques e Centros de Distribuição (CDs) no eixo Sul-Sudeste no período analisado. Para que um produto saísse de São Paulo e chegasse a Manaus (AM) ou Porto Velho (RO), o mercado dependia de uma infraestrutura rodoviária deficiente para longas distâncias ou do uso de transporte aéreo e fluvial (cabotagem), modais consideravelmente mais caros.
@@ -140,7 +140,7 @@ Do ponto de vista de _Business Intelligence_, um frete que consome mais de 1/4 d
 
 **Pergunta 3: Tempo Médio de Entrega e Atrasos Logísticos**
 
-![[pergunta_3.png]]
+![./imgs/pergunta_3.png]
 > _Discussão:_ A análise ao tempo de trânsito logístico expõe de forma crua as assimetrias de infraestrutura e os desafios de segurança pública no Brasil. O topo da tabela de atrasos é dominado por estados da região Nordeste, com Alagoas (AL) a registar uma taxa de quebra de SLA alarmante: mais de 1 em cada 4 pedidos (25,94%) não chegou dentro do prazo estimado, com uma média de espera de 24,4 dias. O Maranhão (MA) e Sergipe (SE) seguem a mesma tendência, o que evidencia a profunda dependência de malhas rodoviárias longas e a falta de centros de distribuição avançados nestas regiões durante o período analisado.
 
 Um dado que se destaca nesta consulta é a presença do Rio de Janeiro (RJ) na 7.ª posição, com 14,86% de atrasos e uma média de 15,1 dias para a entrega, números invulgares para o eixo do Sudeste. Este fenómeno não é justificado pela distância, mas sim pela crise de segurança pública que atingiu o estado entre 2017 e 2018. O agravamento do roubo de cargas forçou as transportadoras e a empresa pública de Correios a mapearem centenas de "Áreas com Restrição de Entrega". Nestes locais, as encomendas sofriam atrasos severos devido à necessidade de agrupamento de carga para escolta armada ou obrigavam o cliente a deslocar-se a uma agência para o levantamento físico do produto.
@@ -155,7 +155,7 @@ Em termos de _Business Intelligence_, uma taxa de quebra de promessa de entrega 
 
 **Pergunta 4: Picos Sazonais e Faturamento (Agrupamento Temporal)**
 
-![[pergunta_4.png]]
+![./imgs/pergunta_4.png]
 > _Discussão:_ A visualização da série histórica completa permite compreender não apenas o fenômeno sazonal clássico, mas também a curva de consolidação do _e-commerce_. O pico absoluto ocorre, de fato, em novembro de 2017, com um salto abrupto para 7.289 pedidos e quase R$ 1 milhão de faturamento (um crescimento de 62,7% face ao mês anterior). Isto confirma o impacto avassalador da Black Friday, que sujeitou a malha logística e os sistemas a um teste de _stress_ severo.
 
 No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definitivo: o efeito "rampa" pós-Black Friday. Longe de ser um evento isolado, novembro serviu como acelerador de aquisição e retenção de clientes. Ao compararmos o primeiro trimestre de 2017 (4.949 pedidos) com o primeiro trimestre de 2018 (20.627 pedidos), constata-se um crescimento homólogo de **316%**. Ao longo de 2018, a plataforma não regressou aos níveis anteriores, estabilizando num novo patamar de maturidade com médias mensais acima de 6 mil transações. Do ponto de vista de Engenharia de Dados, esta mudança de volume de tráfego de forma definitiva justifica plenamente o abandono de arquiteturas tradicionais em favor de um modelo _Lakehouse_ elástico (_Serverless_), capaz de garantir _performance_ e escalabilidade contínuas sem gargalos operacionais.
@@ -166,7 +166,7 @@ No entanto, a análise dos dados de 2018 revela o _insight_ de negócio definiti
 - **Associação Brasileira de Comércio Eletrónico - ABComm (2018):** _Crescimento do E-commerce no Brasil_. Dados macroeconómicos sobre a estabilização e o aumento sustentado do volume de compras recorrentes no início de 2018, validando a maturidade digital do retalho. (https://dados.abcomm.org/crescimento-do-ecommerce-brasileiro)
 
 **Pergunta 5: A dependência do Boleto Bancário e a fricção logística**
-![[pergunta_5.png]]
+![./imgs/pergunta_5.png]
 > _Discussão:_ A análise da base histórica demonstra que, embora o cartão de crédito respondesse pela grande maioria do mercado (76,94%), o Boleto Bancário sustentava praticamente 1 em cada 5 pedidos (19,9%). No ecossistema de _Supply Chain_, um volume de quase 20% condicionado a um meio de pagamento com liquidação morosa (que exige de 1 a 3 dias úteis para compensação bancária) representa um gargalo operacional grave. Durante esse período de "reserva", o estoque do lojista fica bloqueado — indisponível para outros compradores reais — e o _time-to-dispatch_ (tempo até a postagem) é congelado, estendendo artificialmente o prazo de entrega final (SLA) percebido pelo cliente.
 
 Esta fotografia da base ilustra perfeitamente o atrito logístico e financeiro superado estruturalmente no Brasil a partir de novembro de 2020. A implementação do PIX pelo Banco Central atacou cirurgicamente a deficiência tecnológica do boleto, garantindo compensação instantânea (o que libera o fluxo de postagem no mesmo dia) e incluindo digitalmente a vasta parcela da população desbancarizada ou sem limite de crédito. O pipeline de dados revela, portanto, o tamanho exato da dor que o PIX veio curar no varejo digital.
